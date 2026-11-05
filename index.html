@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LULO · Café de especialidad en Coghlan</title>
+<meta name="description" content="Café de especialidad de origen, pastelería casera y una vereda tranquila en Manuela Pedraza 4035, Coghlan. Carta online, café en grano y granola para retirar.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LULO Café de Especialidad">
+<meta property="og:url" content="https://lulo-cafe.vercel.app/">
+<meta property="og:title" content="LULO · Café de especialidad en Coghlan">
+<meta property="og:description" content="Carta online, café de origen y granola y granos para retirar. Manuela Pedraza 4035, Coghlan.">
+<meta property="og:image" content="https://lulo-cafe.vercel.app/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="LULO, café de especialidad en Coghlan: una pausa, una buena.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lulo-cafe.vercel.app/img/og.jpg?v=1">
+<meta name="theme-color" content="#4A6658">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>
+  (function () {
+    var d = document.documentElement;
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('con-intro');
+    d.classList.add('js');
+  })();
+</script>
+<link rel="preload" href="fonts/unbounded-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" imagesrcset="img/hero-granos-500.webp 500w, img/hero-granos-800.webp 800w" imagesizes="(min-width: 1100px) 400px, 62vw" fetchpriority="high">
+<link rel="stylesheet" href="css/fonts.css?v=1">
+<link rel="stylesheet" href="kit/kit.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<!-- INTRO: la planta florece mientras LULO se entinta -->
+<div id="intro" aria-hidden="true">
+  <div class="intro__in">
+    <div class="intro__planta">
+      <svg class="intro__frutos" viewBox="0 0 1555 1425">
+        <circle cx="785" cy="925" r="72" style="--d:0"/>
+        <circle cx="397" cy="1095" r="72" style="--d:1"/>
+        <circle cx="1172" cy="1167" r="86" style="--d:2"/>
+        <circle cx="595" cy="1339" r="58" style="--d:3"/>
+      </svg>
+      <svg class="intro__trazo" viewBox="0 0 1555 1425"><use href="img/sprite.svg#planta"/></svg>
+    </div>
+    <svg class="intro__word" viewBox="0 0 866 168"><use href="img/sprite.svg#lulo"/></svg>
+  </div>
+</div>
+
+<a class="saltar" href="#carta">Ir a la carta</a>
+
+<header class="barra" id="barra">
+  <div class="barra__in">
+    <a class="barra__logo" href="#inicio" aria-label="LULO, inicio">
+      <svg viewBox="0 0 866 168" aria-hidden="true"><use href="img/sprite.svg#lulo"/></svg>
+    </a>
+    <nav class="barra__nav" aria-label="Secciones">
+      <a href="#carta">Carta</a>
+      <a href="#cafe">Nuestro café</a>
+      <a href="#llevar">Para llevar</a>
+      <a href="#vereda">La vereda</a>
+      <a href="#visitanos">Cómo llegar</a>
+    </nav>
+    <div class="barra__acc">
+      <button type="button" class="btn-carrito" data-kit-open="carrito" data-kit-target aria-label="Abrir tu Lulo (pedido)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="btn-carrito__txt">Tu Lulo</span>
+        <span class="btn-carrito__n" data-n="0">0</span>
+      </button>
+      <button type="button" class="btn-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menú">
+    <a href="#carta" style="--i:0">Carta</a>
+    <a href="#cafe" style="--i:1">Nuestro café</a>
+    <a href="#llevar" style="--i:2">Para llevar</a>
+    <a href="#vereda" style="--i:3">La vereda</a>
+    <a href="#comunidad" style="--i:4">Comunidad</a>
+    <a href="#visitanos" style="--i:5">Cómo llegar</a>
+  </nav>
+  <p class="menu__pie"><span class="estado" data-estado>Manuela Pedraza 4035 · Coghlan</span></p>
+  <svg class="menu__planta" viewBox="0 0 1555 1425" aria-hidden="true"><use href="img/sprite.svg#planta"/></svg>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero__in">
+    <div class="hero__texto">
+      <p class="rotulo hero__rot entra" style="--d:0">BS. · COGHLAN · AS.</p>
+      <h1 class="hero__h1">
+        <span class="linea"><span style="--d:1">Acidez y dulzura,</span></span>
+        <span class="linea"><span style="--d:2">como el lulo.</span></span>
+      </h1>
+      <p class="hero__p entra" style="--d:3">Lulo es un fruto que crece en altura, igual que el café. En una cuadra tranquila de Coghlan lo servimos en cerámica, con pastelería casera.</p>
+      <div class="hero__ctas entra" style="--d:4">
+        <a class="btn btn--crema" href="#carta">Ver la carta</a>
+        <a class="btn btn--linea-crema" href="#cafe">Conocé nuestro café</a>
+      </div>
+      <ul class="hero__chips entra" style="--d:5">
+        <li><span class="punto" data-punto></span><span data-estado>Martes a sábados 9:00 a 19:00 hs</span></li>
+        <li><span class="estrellas" aria-hidden="true">★★★★★</span> 4,8 · 340 reseñas en Google</li>
+      </ul>
+    </div>
+    <div class="hero__arte">
+      <svg class="hero__planta" viewBox="0 0 1555 1425" aria-hidden="true"><use href="img/sprite.svg#planta"/></svg>
+      <figure class="plato plato--hero" id="platoHero">
+        <img src="img/hero-granos-800.webp" srcset="img/hero-granos-500.webp 500w, img/hero-granos-800.webp 800w" sizes="(min-width: 1100px) 400px, 62vw" width="800" height="800" alt="Granos de café de origen en una taza de cerámica de LULO" fetchpriority="high" decoding="async">
+      </figure>
+      <figure class="plato plato--chico">
+        <img src="img/hero-cafes-320.webp" width="320" height="320" alt="Dos cafés con budín de arándanos" decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="sec sec--carta" id="carta">
+  <div class="cont">
+    <header class="sec__head">
+      <p class="rotulo rv">LA CARTA</p>
+      <h2 class="titulo rv"><span class="linea"><span>Hay un Lulo</span></span> <span class="linea"><span>para todos.</span></span></h2>
+      <p class="sec__bajada rv">Tocá cualquier café y mirá cómo se arma, con los ml reales. Sumá lo que quieras y pasá a retirar sin esperar: el pedido le llega a LULO a su panel.</p>
+    </header>
+    <div class="carta">
+      <div class="carta__lista" data-kit="carta" id="cartaLocal"></div>
+      <aside class="visor" id="visor" aria-live="polite">
+        <div class="visor__in">
+          <div class="visor__arte">
+            <div class="taza" id="taza" aria-hidden="true">
+              <div class="taza__cuerpo">
+                <span class="taza__capa taza__capa--cafe"></span>
+                <span class="taza__capa taza__capa--leche"></span>
+                <span class="taza__capa taza__capa--espuma"></span>
+              </div>
+              <span class="taza__asa"></span>
+              <span class="taza__plato"></span>
+            </div>
+            <figure class="plato plato--visor" id="visorFoto" hidden>
+              <img src="img/c-latte-640.webp" width="640" height="640" alt="" decoding="async">
+            </figure>
+          </div>
+          <p class="visor__nombre" id="visorNombre">Flat White</p>
+          <p class="visor__desc" id="visorDesc">60 ml de café + 180 ml de leche</p>
+          <ul class="visor__ley" id="visorLey">
+            <li><span class="ley ley--cafe"></span>café</li>
+            <li><span class="ley ley--leche" id="leyLeche"></span>leche</li>
+            <li><span class="ley ley--espuma"></span>espuma</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <p class="carta__qr rv">Esta misma carta vive en <a href="carta/" target="_blank" rel="noopener">su propia página</a>, la del QR de las mesas: LULO cambia un precio desde su panel y se actualiza sola.</p>
+  </div>
+</section>
+
+<!-- NUESTRO CAFÉ -->
+<section class="sec sec--cafe" id="cafe">
+  <div class="cont">
+    <header class="sec__head sec__head--claro">
+      <p class="rotulo rv">NUESTRO CAFÉ · PUERTO BLEST</p>
+      <h2 class="titulo rv"><span class="linea"><span>Cuatro orígenes,</span></span> <span class="linea"><span>una rueda de sabores.</span></span></h2>
+      <p class="sec__bajada rv">Servimos café de especialidad de Puerto Blest, tostadores de café. Elegí un origen y recorré sus notas: de dónde viene, a qué altura crece y cómo lo puntuaron en la cata.</p>
+    </header>
+    <div class="origen rv">
+      <div class="origen__chips" role="tablist" aria-label="Orígenes" id="origenChips"></div>
+      <div class="origen__grid">
+        <div class="rueda" id="rueda">
+          <svg viewBox="-160 -160 320 320" id="ruedaSvg" role="img" aria-label="Rueda de sabores del origen elegido"></svg>
+          <div class="rueda__centro"><b id="ruedaNota">Puntaje</b><span id="ruedaSub">84,25</span></div>
+          <p class="rueda__hint">Tocá o pasá el mouse por la rueda para ver cada nota.</p>
+        </div>
+        <div class="origen__info">
+          <p class="origen__maquina" id="enMaquina" hidden><span class="punto punto--fruto"></span>Hoy en la máquina</p>
+          <p class="rotulo" id="origenPais">PERÚ · AMAZONAS</p>
+          <h3 class="origen__nombre" id="origenNombre">Comité Monteverde</h3>
+          <p class="origen__notas" id="origenNotas"></p>
+          <div class="barras" id="origenBarras"></div>
+          <div class="origen__acc">
+            <button type="button" class="btn btn--crema" id="llevarOrigen">Llevate este café</button>
+            <span class="origen__aviso">En grano o molido, para retirar.</span>
+          </div>
+        </div>
+        <dl class="ficha" id="origenFicha"></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA LLEVAR -->
+<section class="sec sec--llevar" id="llevar">
+  <div class="cont">
+    <header class="sec__head">
+      <p class="rotulo rv">PARA LLEVAR</p>
+      <h2 class="titulo rv"><span class="linea"><span>La pausa,</span></span> <span class="linea"><span>también en tu casa.</span></span></h2>
+    </header>
+    <div class="llevar fila-desliza" data-desliza>
+      <article class="tarjeta rv">
+        <figure class="plato plato--tarjeta"><img src="img/llevar-granos-480.webp" width="480" height="480" alt="Bolsa de café de origen cargando granos" loading="lazy" decoding="async"></figure>
+        <p class="rotulo">PUERTO BLEST · DE ORIGEN</p>
+        <h3>Café en grano o molido</h3>
+        <p>El origen de la semana, para tu método.</p>
+        <div class="molienda" role="radiogroup" aria-label="Molienda" id="molienda">
+          <button type="button" role="radio" aria-checked="true" data-mol="grano">En grano</button>
+          <button type="button" role="radio" aria-checked="false" data-mol="espresso">Espresso</button>
+          <button type="button" role="radio" aria-checked="false" data-mol="filtro">Filtro</button>
+          <button type="button" role="radio" aria-checked="false" data-mol="prensa">Prensa</button>
+        </div>
+        <div class="tarjeta__pie"><span class="precio">A confirmar</span><button type="button" class="btn btn--verde" id="sumarGrano">Sumar a tu Lulo</button></div>
+      </article>
+      <article class="tarjeta rv">
+        <figure class="plato plato--tarjeta"><img src="img/llevar-granola-480.webp" width="480" height="480" alt="Vitrina de LULO con bolsas de granola" loading="lazy" decoding="async"></figure>
+        <p class="rotulo">HECHA ACÁ</p>
+        <h3>Granola · bolsa de 500 g</h3>
+        <p>La de la vitrina, para el desayuno de toda la semana.</p>
+        <div class="tarjeta__pie"><span class="precio">A confirmar</span><div class="kit-qty" data-kit-qty="granola"></div></div>
+      </article>
+      <article class="tarjeta rv">
+        <figure class="plato plato--tarjeta"><img src="img/llevar-vaso-480.webp" width="480" height="480" alt="Café para llevar en vaso de LULO" loading="lazy" decoding="async"></figure>
+        <p class="rotulo">A LAS CORRIDAS</p>
+        <h3>Pedilo antes y pasá</h3>
+        <p>Armás el pedido desde la carta, elegís la hora y lo retirás en la vereda sin esperar.</p>
+        <div class="tarjeta__pie"><span class="precio">Toda la carta</span><a class="btn btn--linea" href="#carta">Ir a la carta</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LA VEREDA -->
+<section class="sec sec--vereda" id="vereda">
+  <div class="cont vereda">
+    <div class="vereda__texto">
+      <p class="rotulo rv">LA VEREDA · DESDE 2023</p>
+      <h2 class="titulo rv"><span class="linea"><span>Uno de los barrios</span></span> <span class="linea"><span>más chicos, con el</span></span> <span class="linea"><span>corazón más grande.</span></span></h2>
+      <p class="rv">LULO nació del sueño de Fede: un café de especialidad en Coghlan, con una vereda simple y un ambiente relajado. Hoy es un lugar de pertenencia para muchos y, como dicen algunos, un segundo hogar.</p>
+      <div class="firmas rv">
+        <p><b>Fede</b><span>el artista de tu café favorito</span></p>
+        <p><b>Lea</b><span>la mejor atención y los cafecitos de la tarde</span></p>
+      </div>
+      <blockquote class="cita rv">“Nos vemos ahí. Donde siempre.”<cite>— Fede</cite></blockquote>
+    </div>
+    <div class="galeria fila-desliza" data-desliza data-galeria>
+      <figure class="g g1"><img src="img/v-barra-520.webp" srcset="img/v-barra-520.webp 520w, img/v-barra-900.webp 900w" sizes="(min-width: 1100px) 330px, 72vw" width="520" height="650" alt="La barra larga de LULO con luz natural" loading="lazy" decoding="async"></figure>
+      <figure class="g g2"><img src="img/v-fede-520.webp" srcset="img/v-fede-520.webp 520w, img/v-fede-900.webp 900w" sizes="(min-width: 1100px) 260px, 72vw" width="520" height="650" alt="Fede sentado en la vereda de LULO" loading="lazy" decoding="async"></figure>
+      <figure class="g g3"><img src="img/v-salon-520.webp" srcset="img/v-salon-520.webp 520w, img/v-salon-900.webp 900w" sizes="(min-width: 1100px) 300px, 72vw" width="520" height="520" alt="Clientes tomando café en las mesas de LULO" loading="lazy" decoding="async"></figure>
+      <figure class="g g4"><img src="img/v-latte-520.webp" srcset="img/v-latte-520.webp 520w, img/v-latte-900.webp 900w" sizes="(min-width: 1100px) 240px, 72vw" width="520" height="650" alt="Latte art en un vaso para llevar" loading="lazy" decoding="async"></figure>
+      <figure class="g g5"><img src="img/v-maquina-520.webp" srcset="img/v-maquina-520.webp 520w, img/v-maquina-900.webp 900w" sizes="(min-width: 1100px) 280px, 72vw" width="520" height="520" alt="La máquina de espresso con tazas de cerámica arriba" loading="lazy" decoding="async"></figure>
+      <figure class="g g6"><img src="img/v-vitrina-520.webp" srcset="img/v-vitrina-520.webp 520w, img/v-vitrina-900.webp 900w" sizes="(min-width: 1100px) 260px, 72vw" width="520" height="520" alt="Scones bajo la campana de vidrio" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- COMUNIDAD -->
+<section class="sec sec--comunidad" id="comunidad">
+  <div class="cont">
+    <header class="sec__head">
+      <p class="rotulo rv">COMUNIDAD</p>
+      <h2 class="titulo rv"><span class="linea"><span>No solo un café:</span></span> <span class="linea"><span>una comunidad.</span></span></h2>
+      <p class="sec__bajada rv">Cada tanto abrimos la casa para algo más. Seguinos en Instagram para enterarte de la próxima fecha.</p>
+    </header>
+    <div class="eventos fila-desliza" data-desliza>
+      <article class="evento rv"><figure><img src="img/e-vinilos-560.webp" width="560" height="700" alt="Afiche de café, vermú y feria de vinilos en LULO" loading="lazy" decoding="async"></figure><h3>Café, vermú y vinilos</h3><p>Con Du Monde Records y el vermú de Yuyo, que solo encontrás en Coghlan.</p></article>
+      <article class="evento rv"><figure><img src="img/e-ramen-560.webp" width="560" height="700" alt="Afiche de Ramen en Lulo con Ume Ramen" loading="lazy" decoding="async"></figure><h3>Ramen en Lulo</h3><p>Un almuerzo especial de la mano de Ume Ramen, con vinitos y DJ.</p></article>
+      <article class="evento rv"><figure><img src="img/e-musica-540.webp" width="540" height="675" alt="Música en vivo en la vereda de LULO" loading="lazy" decoding="async"></figure><h3>Música en vivo</h3><p>Guitarra y saxo en la vereda, una tarde cualquiera.</p></article>
+      <article class="evento rv"><figure><img src="img/e-arte-560.webp" width="560" height="700" alt="Obras de Ana Stok en las paredes de LULO" loading="lazy" decoding="async"></figure><h3>Arte en las paredes</h3><p>Artistas del barrio, como Ana Stok, cuelgan sus obras y libros en el café.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="sec sec--resenas" id="resenas">
+  <div class="cont">
+    <header class="sec__head sec__head--fila">
+      <div>
+        <p class="rotulo rv">LO QUE DICEN EN GOOGLE</p>
+        <h2 class="titulo rv"><span class="linea"><span>4,8 de 5,</span></span> <span class="linea"><span>en 340 reseñas.</span></span></h2>
+      </div>
+      <div class="flechas" aria-label="Mover reseñas">
+        <button type="button" class="flecha" data-mover="-1" aria-label="Reseñas anteriores">‹</button>
+        <button type="button" class="flecha" data-mover="1" aria-label="Más reseñas">›</button>
+      </div>
+    </header>
+    <div class="resenas fila-desliza" data-desliza id="resenas-fila">
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“El café es, sin exagerar, de los mejores que probé: espumoso, bien caliente y con un sabor espectacular. Y un capítulo aparte para Fede, el dueño, que te hace sentir como en casa desde que entrás.”</p><p class="resena__n">Pilar D.</p></article>
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“Excelente café! Muy bien preparado, con buena temperatura y muy bien equilibrado. Servido en una vajilla sutil, rústica, que invita a disfrutar. Una linda joya en el barrio.”</p><p class="resena__n">Juan P.</p></article>
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“Probé el forforito con jamón y queso, el croissant y el scon de queso y todo fue espectacular. La cuadra es muy tranquila y el lugar te invita a disfrutar una hermosa tarde.”</p><p class="resena__n">Sol G.</p></article>
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“Los chipá son excelentes y los scons de queso también muy ricos. Probamos las cookies y el budín de carrot, súper esponjoso. Los chicos siempre buena onda.”</p><p class="resena__n">Clarisa R.</p></article>
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“Hermoso cafecito, un lugar que abraza e invita a volver, porque no es solo el riquísimo café: es la energía, sobre todo, de su dueño Fede.”</p><p class="resena__n">Paula H.</p></article>
+      <article class="resena"><p class="resena__est"><span aria-hidden="true">★★★★★</span> <b>5/5</b></p><p class="resena__t">“Exquisito café peruano en el caso del que tomé hoy, y muy bien preparado. Lugar tranquilo para ir a relajar, trabajar o reunirse y pasar un lindo momento.”</p><p class="resena__n">Angie C.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO LLEGAR -->
+<section class="sec sec--visitanos" id="visitanos">
+  <div class="cont visitanos">
+    <div class="visitanos__texto">
+      <p class="rotulo rv">CÓMO LLEGAR</p>
+      <h2 class="titulo rv"><span class="linea"><span>Manuela Pedraza 4035,</span></span> <span class="linea"><span>Coghlan.</span></span></h2>
+      <p class="rv estado-grande"><span class="punto" data-punto></span><span data-estado>Martes a sábados 9:00 a 19:00 hs</span></p>
+      <ul class="horario rv" id="horario">
+        <li data-dia="2"><span>Martes</span><span>9:00 a 19:00 hs</span></li>
+        <li data-dia="3"><span>Miércoles</span><span>9:00 a 19:00 hs</span></li>
+        <li data-dia="4"><span>Jueves</span><span>9:00 a 19:00 hs</span></li>
+        <li data-dia="5"><span>Viernes</span><span>9:00 a 19:00 hs</span></li>
+        <li data-dia="6"><span>Sábado</span><span>9:00 a 19:00 hs</span></li>
+        <li data-dia="0"><span>Domingo</span><span>10:00 a 18:00 hs</span></li>
+        <li data-dia="1"><span>Lunes</span><span>Cerrado</span></li>
+      </ul>
+      <div class="visitanos__acc rv">
+        <a class="btn btn--verde" href="https://www.google.com/maps/dir/?api=1&amp;destination=LULO+Caf%C3%A9+de+Especialidad,+Manuela+Pedraza+4035,+CABA" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        <a class="btn btn--linea" href="https://www.instagram.com/lulocafedeespecialidad/" target="_blank" rel="noopener">@lulocafedeespecialidad</a>
+      </div>
+    </div>
+    <div class="mapa rv">
+      <iframe title="Mapa de LULO en Manuela Pedraza 4035, Coghlan" src="https://www.google.com/maps?q=LULO+Caf%C3%A9+de+Especialidad,+Manuela+Pedraza+4035,+Buenos+Aires&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="cont pie__in">
+    <svg class="pie__planta" viewBox="0 0 1555 1425" aria-hidden="true"><use href="img/sprite.svg#planta"/></svg>
+    <div class="pie__marca">
+      <svg class="pie__logo" viewBox="0 0 866 168" role="img" aria-label="LULO"><use href="img/sprite.svg#lulo"/></svg>
+      <p class="rotulo">CAFÉ DE ESPECIALIDAD</p>
+      <p class="pie__frase">Tomate una pausa. Una buena.</p>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <p class="pie__tit">Visitanos</p>
+        <p>Manuela Pedraza 4035<br>Coghlan, CABA</p>
+        <p><span class="nw">Mar a sáb 9:00 a 19:00 hs</span><br><span class="nw">Dom 10:00 a 18:00 hs</span></p>
+      </div>
+      <div>
+        <p class="pie__tit">La web</p>
+        <p><a href="#carta">Carta</a><br><a href="carta/" target="_blank" rel="noopener">Carta del QR</a><br><a href="#llevar">Para llevar</a></p>
+      </div>
+      <div>
+        <p class="pie__tit">Seguinos</p>
+        <p><a href="https://www.instagram.com/lulocafedeespecialidad/" target="_blank" rel="noopener">Instagram</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="cont pie__base">
+    <p class="rotulo pie__bsas"><span>BS.</span><span>COGHLAN</span><span>AS.</span></p>
+    <p class="credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
+  </div>
+</footer>
+
+<!-- Hoja de detalle (celu) -->
+<div class="hoja" id="hoja" hidden>
+  <div class="hoja__fondo" data-cerrar></div>
+  <div class="hoja__box" role="dialog" aria-modal="true" aria-labelledby="hojaNombre">
+    <button type="button" class="hoja__x" data-cerrar aria-label="Cerrar">×</button>
+    <div class="hoja__arte" id="hojaArte"></div>
+    <p class="hoja__nombre" id="hojaNombre"></p>
+    <p class="hoja__desc" id="hojaDesc"></p>
+    <div class="hoja__pie"><span class="precio" id="hojaPrecio">A confirmar</span><div class="kit-qty" id="hojaQty"></div></div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,499 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AlejoMFernandez/kit-demos/main/docs/cliente.schema.json",
+  "id": "lulo-cafe",
+  "nombre": "LULO",
+  "pais": "AR",
+  "idioma": "es",
+  "modo": "demo",
+  "whatsapp": "",
+  "instagram": "lulocafedeespecialidad",
+  "prefijoPedido": "LU",
+  "supabase": {
+    "url": "",
+    "anonKey": ""
+  },
+  "marca": {
+    "logo": "img/logo-tinta.svg",
+    "logoPanel": "img/logo-crema.svg",
+    "favicon": "img/favicon.png",
+    "logoClaro": "img/logo-crema.svg",
+    "isotipo": "img/isotipo.svg",
+    "colores": {
+      "fondo": "#F3E9DC",
+      "superficie": "#FBF6EF",
+      "texto": "#1C1C1C",
+      "primario": "#2D4741",
+      "acento": "#D9822B",
+      "borde": "#E2D4C1"
+    },
+    "fuentes": {
+      "titulos": "'Unbounded', system-ui, sans-serif",
+      "texto": "'Instrument Sans', system-ui, sans-serif",
+      "googleFonts": ""
+    },
+    "estilo": {
+      "forma": "pildora",
+      "sombra": "suave",
+      "borde": "1.5px",
+      "mayusculas": false
+    }
+  },
+  "modulos": {
+    "carta": true,
+    "carrito": true,
+    "reservas": false,
+    "admin": true,
+    "cartaQR": true
+  },
+  "horarios": {
+    "lun": [],
+    "mar": [
+      [
+        "09:00",
+        "19:00"
+      ]
+    ],
+    "mie": [
+      [
+        "09:00",
+        "19:00"
+      ]
+    ],
+    "jue": [
+      [
+        "09:00",
+        "19:00"
+      ]
+    ],
+    "vie": [
+      [
+        "09:00",
+        "19:00"
+      ]
+    ],
+    "sab": [
+      [
+        "09:00",
+        "19:00"
+      ]
+    ],
+    "dom": [
+      [
+        "10:00",
+        "18:00"
+      ]
+    ]
+  },
+  "pedidos": {
+    "salidas": [
+      "efectivo",
+      "mercadopago"
+    ],
+    "tipos": [
+      "retiro"
+    ],
+    "aviso": "panel",
+    "sinPrecio": "a_confirmar",
+    "retiroHoy": {
+      "cadaMin": 15,
+      "prepMin": 10,
+      "asap": true
+    }
+  },
+  "pagos": {
+    "mercadopago": {
+      "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference",
+      "modo": "sandbox"
+    }
+  },
+  "destacados": [
+    {
+      "id": "tolva",
+      "nombre": "En la máquina",
+      "ayuda": "El café de origen que está hoy en la máquina: Perú, Durazno, El Peñón o Caturra Honey.",
+      "campos": [
+        {
+          "id": "origen",
+          "label": "Origen"
+        },
+        {
+          "id": "nota",
+          "label": "Nota corta",
+          "largo": true
+        }
+      ],
+      "valores": {
+        "origen": "Durazno",
+        "nota": "Almendras, pasas de uva y chocolate con leche."
+      }
+    }
+  ],
+  "carta": {
+    "categorias": [
+      {
+        "id": "caliente",
+        "nombre": "Caliente"
+      },
+      {
+        "id": "frio",
+        "nombre": "Frío"
+      },
+      {
+        "id": "otras",
+        "nombre": "Otras bebidas"
+      },
+      {
+        "id": "pasteleria",
+        "nombre": "Pastelería"
+      },
+      {
+        "id": "salado",
+        "nombre": "Salado"
+      },
+      {
+        "id": "llevar",
+        "nombre": "Para llevar"
+      }
+    ],
+    "productos": [
+      {
+        "id": "espresso",
+        "categoria": "caliente",
+        "nombre": "Espresso",
+        "descripcion": "30 ml de café",
+        "precio": null,
+        "foto": "img/c-espresso-240.webp"
+      },
+      {
+        "id": "espresso-doble",
+        "categoria": "caliente",
+        "nombre": "Espresso doble",
+        "descripcion": "60 ml de café",
+        "precio": null,
+        "foto": "img/c-doble-240.webp"
+      },
+      {
+        "id": "macchiato",
+        "categoria": "caliente",
+        "nombre": "Macchiato",
+        "descripcion": "30 ml de café + 10 ml de espuma de leche",
+        "precio": null
+      },
+      {
+        "id": "macchiato-doble",
+        "categoria": "caliente",
+        "nombre": "Macchiato doble",
+        "descripcion": "60 ml de café + 20 ml de espuma de leche",
+        "precio": null
+      },
+      {
+        "id": "americano",
+        "categoria": "caliente",
+        "nombre": "Americano",
+        "descripcion": "30 ml de café + 150 ml de agua",
+        "precio": null
+      },
+      {
+        "id": "capuccino",
+        "categoria": "caliente",
+        "nombre": "Capuccino",
+        "descripcion": "30 ml de café + 150 ml de leche",
+        "precio": null,
+        "foto": "img/c-capuccino-240.webp"
+      },
+      {
+        "id": "cortado",
+        "categoria": "caliente",
+        "nombre": "Cortado",
+        "descripcion": "30 ml de café + 60 ml de leche",
+        "precio": null
+      },
+      {
+        "id": "magic",
+        "categoria": "caliente",
+        "nombre": "Magic",
+        "descripcion": "60 ml de café + 60 ml de leche",
+        "precio": null
+      },
+      {
+        "id": "flat-white",
+        "categoria": "caliente",
+        "nombre": "Flat White",
+        "descripcion": "60 ml de café + 180 ml de leche",
+        "precio": null
+      },
+      {
+        "id": "latte",
+        "categoria": "caliente",
+        "nombre": "Latte",
+        "descripcion": "60 ml de café + 220 ml de leche",
+        "precio": null,
+        "foto": "img/c-latte-240.webp"
+      },
+      {
+        "id": "espresso-tonic",
+        "categoria": "frio",
+        "nombre": "Espresso tonic",
+        "descripcion": "Con tónica “El Pulpo Blanco”",
+        "precio": null
+      },
+      {
+        "id": "iced-latte",
+        "categoria": "frio",
+        "nombre": "Iced latte",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-iced-240.webp"
+      },
+      {
+        "id": "iced-flat",
+        "categoria": "frio",
+        "nombre": "Iced flat",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "iced-americano",
+        "categoria": "frio",
+        "nombre": "Iced americano",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "extra-vegetal",
+        "categoria": "frio",
+        "nombre": "Extra leche vegetal",
+        "descripcion": "Para cualquier café de la carta",
+        "precio": null
+      },
+      {
+        "id": "extra-shot",
+        "categoria": "frio",
+        "nombre": "Extra shot de café",
+        "descripcion": "Para cualquier café de la carta",
+        "precio": null
+      },
+      {
+        "id": "chocolatada",
+        "categoria": "otras",
+        "nombre": "Chocolatada",
+        "descripcion": "240 ml de leche emulsionada + chocolate",
+        "precio": null
+      },
+      {
+        "id": "agua",
+        "categoria": "otras",
+        "nombre": "Agua",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "jugo",
+        "categoria": "otras",
+        "nombre": "Jugo de naranja",
+        "descripcion": "350 ml",
+        "precio": null
+      },
+      {
+        "id": "chipa",
+        "categoria": "pasteleria",
+        "nombre": "Chipá",
+        "descripcion": "Nuevo en LULO",
+        "precio": null,
+        "foto": "img/c-chipa-240.webp",
+        "etiquetas": [
+          "nuevo"
+        ]
+      },
+      {
+        "id": "croissant",
+        "categoria": "pasteleria",
+        "nombre": "Croissant",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-croissant-240.webp"
+      },
+      {
+        "id": "medialuna",
+        "categoria": "pasteleria",
+        "nombre": "Medialuna",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "alfajor",
+        "categoria": "pasteleria",
+        "nombre": "Alfajor de almendra",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "brownie",
+        "categoria": "pasteleria",
+        "nombre": "Brownie",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "budin-banana",
+        "categoria": "pasteleria",
+        "nombre": "Budín de banana",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "budin-limon",
+        "categoria": "pasteleria",
+        "nombre": "Budín de limón y arándanos",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-budin-240.webp"
+      },
+      {
+        "id": "carrot",
+        "categoria": "pasteleria",
+        "nombre": "Carrot cake",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-carrot-240.webp"
+      },
+      {
+        "id": "cookie-70",
+        "categoria": "pasteleria",
+        "nombre": "Cookie chocolate 70 %",
+        "descripcion": "Harina de trigo y chocolate amargo",
+        "precio": null,
+        "foto": "img/c-cookie-240.webp"
+      },
+      {
+        "id": "cookie-levain",
+        "categoria": "pasteleria",
+        "nombre": "Cookie estilo Levain Bakery",
+        "descripcion": "Harina de trigo, chocolate semiamargo y nuez",
+        "precio": null
+      },
+      {
+        "id": "cookie-avellanas",
+        "categoria": "pasteleria",
+        "nombre": "Cookie de avellanas",
+        "descripcion": "Con chocolate amargo",
+        "precio": null,
+        "etiquetas": [
+          "vegano"
+        ]
+      },
+      {
+        "id": "pepas",
+        "categoria": "pasteleria",
+        "nombre": "Pepas integrales",
+        "descripcion": "",
+        "precio": null,
+        "etiquetas": [
+          "vegano"
+        ]
+      },
+      {
+        "id": "roll",
+        "categoria": "pasteleria",
+        "nombre": "Roll de canela",
+        "descripcion": "",
+        "precio": null
+      },
+      {
+        "id": "sin-tacc",
+        "categoria": "pasteleria",
+        "nombre": "Sin T.A.C.C.",
+        "descripcion": "Consultá las opciones del día",
+        "precio": null
+      },
+      {
+        "id": "scon",
+        "categoria": "salado",
+        "nombre": "Scon de queso",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-scon-240.webp"
+      },
+      {
+        "id": "forforito",
+        "categoria": "salado",
+        "nombre": "Forforito de jamón y queso",
+        "descripcion": "",
+        "precio": null,
+        "foto": "img/c-forforito-240.webp"
+      },
+      {
+        "id": "pan-nuez",
+        "categoria": "salado",
+        "nombre": "Pan de nuez y miel",
+        "descripcion": "Con jamón crudo y queso",
+        "precio": null
+      },
+      {
+        "id": "cafe-grano",
+        "categoria": "llevar",
+        "nombre": "Café de origen Puerto Blest",
+        "descripcion": "El origen de la semana, en grano o molido para tu método.",
+        "precio": null,
+        "foto": "img/llevar-granos-480.webp",
+        "etiquetas": [
+          "casa"
+        ],
+        "opciones": [
+          {
+            "id": "molienda",
+            "nombre": "Molienda",
+            "valores": [
+              {
+                "id": "grano",
+                "nombre": "En grano"
+              },
+              {
+                "id": "espresso",
+                "nombre": "Para espresso"
+              },
+              {
+                "id": "filtro",
+                "nombre": "Para filtro"
+              },
+              {
+                "id": "prensa",
+                "nombre": "Para prensa francesa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "granola",
+        "categoria": "llevar",
+        "nombre": "Granola",
+        "descripcion": "Bolsa de 500 g",
+        "precio": null,
+        "foto": "img/llevar-granola-480.webp",
+        "etiquetas": [
+          "casa"
+        ]
+      }
+    ]
+  },
+  "cartaQR": {
+    "textos": {
+      "titulo": "Nuestra carta"
+    }
+  },
+  "textos": {
+    "tuPedido": "Tu Lulo",
+    "verPedido": "Ver tu Lulo",
+    "agregar": "Sumar",
+    "agregado": "Sumado",
+    "carritoVacio": "Todavía no hay nada.",
+    "carritoVacioSub": "¿Un cortado? Sumalo desde la carta.",
+    "pedidoListo": "Listo.",
+    "pedidoListoPanel": "Tu código es {codigo}. LULO ya lo tiene en su panel: te esperamos en la vereda.",
+    "porEfectivo": "Pagás al retirar",
+    "porEfectivoSubSin": "Efectivo o transferencia en la vereda",
+    "avisoSinPrecio": "Los precios están a confirmar: LULO te los confirma antes de prepararlo.",
+    "retiro": "Retiro en Manuela Pedraza 4035"
+  }
+}
