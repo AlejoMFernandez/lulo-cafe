@@ -32,7 +32,7 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="img/hero-granos-500.webp 500w, img/hero-granos-800.webp 800w" imagesizes="(min-width: 1100px) 400px, 62vw" fetchpriority="high">
 <link rel="stylesheet" href="css/fonts.css?v=1">
 <link rel="stylesheet" href="kit/kit.css?v=1">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -147,6 +147,7 @@
               <span class="taza__asa"></span>
               <span class="taza__plato"></span>
             </div>
+            <span class="taza__tipo">Taza grande</span>
             <figure class="plato plato--visor" id="visorFoto" hidden>
               <img src="img/c-latte-640.webp" width="640" height="640" alt="" decoding="async">
             </figure>
@@ -168,30 +169,31 @@
 <!-- NUESTRO CAFÉ -->
 <section class="sec sec--cafe" id="cafe">
   <div class="cont">
-    <header class="sec__head sec__head--claro">
-      <p class="rotulo rv">NUESTRO CAFÉ · PUERTO BLEST</p>
-      <h2 class="titulo rv"><span class="linea"><span>Cuatro orígenes,</span></span> <span class="linea"><span>una rueda de sabores.</span></span></h2>
-      <p class="sec__bajada rv">Servimos café de especialidad de Puerto Blest, tostadores de café. Elegí un origen y recorré sus notas: de dónde viene, a qué altura crece y cómo lo puntuaron en la cata.</p>
-    </header>
-    <div class="origen rv">
-      <div class="origen__chips" role="tablist" aria-label="Orígenes" id="origenChips"></div>
-      <div class="origen__grid">
-        <div class="rueda" id="rueda">
-          <svg viewBox="-160 -160 320 320" id="ruedaSvg" role="img" aria-label="Rueda de sabores del origen elegido"></svg>
-          <div class="rueda__centro"><b id="ruedaNota">Puntaje</b><span id="ruedaSub">84,25</span></div>
-          <p class="rueda__hint">Tocá o pasá el mouse por la rueda para ver cada nota.</p>
+    <div class="cafe">
+      <header class="cafe__head">
+        <p class="rotulo rv">NUESTRO CAFÉ · PUERTO BLEST</p>
+        <h2 class="titulo rv"><span class="linea"><span>Cuatro orígenes,</span></span> <span class="linea"><span>una rueda de sabores.</span></span></h2>
+        <p class="cafe__bajada rv">Café de especialidad de Puerto Blest, tostadores de café. Elegí un origen y recorré sus notas.</p>
+      </header>
+      <div class="origen__chips rv" role="tablist" aria-label="Orígenes" id="origenChips"></div>
+      <div class="rueda rv" id="rueda">
+        <svg viewBox="-160 -160 320 320" id="ruedaSvg" role="img" aria-label="Rueda de sabores del origen elegido"></svg>
+        <div class="rueda__centro" id="ruedaCentro"><b id="ruedaNota">Puntaje</b><span id="ruedaSub">84,25</span></div>
+        <p class="rueda__hint">Tocá o pasá el mouse por la rueda para ver cada nota.</p>
+      </div>
+      <div class="origen__info rv" id="origenInfo">
+        <p class="origen__maquina" id="enMaquina" hidden><span class="punto punto--fruto"></span>Hoy en la máquina</p>
+        <p class="rotulo cambia-txt" id="origenPais">PERÚ · AMAZONAS</p>
+        <h3 class="origen__nombre cambia-txt" id="origenNombre">Comité Monteverde</h3>
+        <p class="origen__notas cambia-txt" id="origenNotas"></p>
+        <div class="origen__acc">
+          <button type="button" class="btn btn--crema" id="llevarOrigen">Llevate este café</button>
+          <span class="origen__aviso">En grano o molido, para retirar.</span>
         </div>
-        <div class="origen__info">
-          <p class="origen__maquina" id="enMaquina" hidden><span class="punto punto--fruto"></span>Hoy en la máquina</p>
-          <p class="rotulo" id="origenPais">PERÚ · AMAZONAS</p>
-          <h3 class="origen__nombre" id="origenNombre">Comité Monteverde</h3>
-          <p class="origen__notas" id="origenNotas"></p>
-          <div class="barras" id="origenBarras"></div>
-          <div class="origen__acc">
-            <button type="button" class="btn btn--crema" id="llevarOrigen">Llevate este café</button>
-            <span class="origen__aviso">En grano o molido, para retirar.</span>
-          </div>
-        </div>
+      </div>
+      <div class="origen__datos rv">
+        <p class="origen__tit">Puntaje de cata</p>
+        <div class="barras" id="origenBarras"></div>
         <dl class="ficha" id="origenFicha"></dl>
       </div>
     </div>
@@ -373,6 +375,6 @@
   </div>
 </div>
 
-<script type="module" src="js/main.js?v=1"></script>
+<script type="module" src="js/main.js?v=2"></script>
 </body>
 </html>

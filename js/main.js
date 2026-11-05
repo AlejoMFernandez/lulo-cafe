@@ -41,6 +41,7 @@ const hero = $('#inicio');
 let ticking = false;
 function pintarBarra() {
   ticking = false;
+  if (document.body.style.position === 'fixed') return;
   const lim = (hero?.offsetHeight || 600) - 70;
   barra.classList.toggle('solida', scrollY > lim);
 }
@@ -166,17 +167,27 @@ function pintarEstado(kit) {
 }
 
 /* ---------------- CARTA: taza que se arma + visor ---------------- */
-// ml reales de su carta: [café, leche/agua, espuma]
+// ml reales de su carta: [café, leche/agua, espuma] + el recipiente donde se sirve
 const TAZAS = {
-  'espresso': [30, 0, 0], 'espresso-doble': [60, 0, 0], 'macchiato': [30, 0, 10], 'macchiato-doble': [60, 0, 20],
-  'americano': [30, 150, 0, 'agua'], 'capuccino': [30, 110, 40], 'cortado': [30, 60, 0], 'magic': [60, 60, 0],
-  'flat-white': [60, 165, 15], 'latte': [60, 190, 30],
+  'espresso': [30, 0, 0, '', 'demi'], 'espresso-doble': [60, 0, 0, '', 'demi2'], 'macchiato': [30, 0, 10, '', 'demi'], 'macchiato-doble': [60, 0, 20, '', 'demi2'],
+  'americano': [30, 150, 0, 'agua', 'taza'], 'capuccino': [30, 110, 40, '', 'taza'], 'cortado': [30, 60, 0, '', 'vaso'], 'magic': [60, 60, 0, '', 'vaso'],
+  'flat-white': [60, 165, 15, '', 'flat'], 'latte': [60, 190, 30, '', 'alto'],
 };
-const PX = 180 / 300;
+// recipientes: ancho y alto del cuerpo (px en el visor), capacidad (ml), si tiene asa y plato o es vaso
+const VAJILLA = {
+  demi:  { w: 78,  h: 62,  cap: 45,  asa: true,  r: '8px 8px 34px 34px', nombre: 'Pocillo' },
+  demi2: { w: 96,  h: 78,  cap: 90,  asa: true,  r: '9px 9px 42px 42px', nombre: 'Pocillo doble' },
+  vaso:  { w: 84,  h: 112, cap: 140, asa: false, r: '6px 6px 16px 16px', nombre: 'Vasito' },
+  taza:  { w: 150, h: 118, cap: 190, asa: true,  r: '10px 10px 70px 70px', nombre: 'Taza' },
+  flat:  { w: 156, h: 136, cap: 260, asa: true,  r: '10px 10px 74px 74px', nombre: 'Taza grande' },
+  alto:  { w: 104, h: 188, cap: 300, asa: false, r: '8px 8px 20px 20px', nombre: 'Vaso alto' },
+};
 const svgTaza = (id) => {
-  const t = TAZAS[id]; const tot = t[0] + t[1] + t[2]; const h = Math.max(4, Math.round(16 * tot / 290));
-  const c = Math.round(h * t[0] / tot);
-  return `<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 9h17v9a8.5 8.5 0 0 1-17 0z" fill="#F3E9DC" stroke="#2D4741" stroke-width="1.6"/><path d="M23 11.5h2a3.4 3.4 0 0 1 0 6.8h-2.4" fill="none" stroke="#2D4741" stroke-width="1.6"/><clipPath id="cp-${id}"><path d="M6.8 9.8h15.4v8.2a7.7 7.7 0 0 1-15.4 0z"/></clipPath><g clip-path="url(#cp-${id})"><rect x="6" y="${26.5 - h}" width="17" height="${h - c}" fill="${t[3] === 'agua' ? '#B98A62' : '#D9BFA0'}"/><rect x="6" y="${26.5 - c}" width="17" height="${c}" fill="#5A3A22"/></g></svg>`;
+  const t = TAZAS[id]; const v = VAJILLA[t[4]]; const k = 22 / 196;
+  const w = Math.max(9, v.w * k), h = Math.max(8, v.h * k), x = (v.asa ? 14 : 16) - w / 2, y = 27 - h;
+  const tot = (t[0] + t[1] + t[2]) / v.cap; const hl = h * tot, hc = h * t[0] / v.cap;
+  const rx = v.asa ? Math.min(w / 2, h * .55) : 1.6;
+  return `<svg viewBox="0 0 32 32" aria-hidden="true"><clipPath id="cp-${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}"/></clipPath><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${v.asa ? '#F3E9DC' : 'rgba(243,233,220,.55)'}" stroke="#2D4741" stroke-width="1.4"/><g clip-path="url(#cp-${id})"><rect x="${x}" y="${27 - hl}" width="${w}" height="${hl - hc}" fill="${t[3] === 'agua' ? '#B98A62' : '#D9BFA0'}"/><rect x="${x}" y="${27 - hc}" width="${w}" height="${hc}" fill="#5A3A22"/></g>${v.asa ? `<path d="M${x + w} ${y + h * .2}h1.8a${h * .2} ${h * .2} 0 0 1 0 ${h * .4}h-2" fill="none" stroke="#2D4741" stroke-width="1.4"/>` : ''}</svg>`;
 };
 const PLANTA_MINI = '<svg viewBox="0 0 1555 1425" aria-hidden="true"><use href="img/sprite.svg#planta"/></svg>';
 let productos = [];
@@ -185,12 +196,20 @@ const prodPor = (id) => productos.find(p => p.id === id);
 function fotoGrande(p) { return p?.foto ? p.foto.replace('-240.webp', '-640.webp') : null; }
 
 function pintarTaza(root, id) {
-  const t = TAZAS[id] || [0, 0, 0];
-  const [cafe, leche, espuma] = $$('.taza__capa', root);
-  cafe.style.height = `${t[0] * PX}px`;
-  leche.style.height = `${t[1] * PX}px`;
+  const t = TAZAS[id] || [0, 0, 0, '', 'taza'];
+  const v = VAJILLA[t[4]] || VAJILLA.taza;
+  const taza = root.classList?.contains('taza') ? root : $('.taza', root);
+  taza.style.setProperty('--w', `${v.w}px`);
+  taza.style.setProperty('--h', `${v.h}px`);
+  taza.style.setProperty('--rad', v.r);
+  taza.classList.toggle('es-vaso', !v.asa);
+  const px = v.h / v.cap;
+  const [cafe, leche, espuma] = $$('.taza__capa', taza);
+  cafe.style.height = `${t[0] * px}px`;
+  leche.style.height = `${t[1] * px}px`;
   leche.classList.toggle('agua', t[3] === 'agua');
-  espuma.style.height = `${t[2] * PX}px`;
+  espuma.style.height = `${t[2] * px}px`;
+  const n = $('.taza__tipo', taza.parentElement); if (n) n.textContent = v.nombre;
 }
 const visor = $('#visor');
 let visorId = null;
@@ -341,51 +360,102 @@ const aclarar = (hex, k) => {
   const n = parseInt(hex.slice(1), 16); const m = (c) => Math.round(c + (243 - c) * k);
   return `rgb(${m(n >> 16)},${m((n >> 8) & 255)},${m(n & 255)})`;
 };
+let animandoNums = 0;
+function contar(el, desde, hasta) {
+  const t0 = performance.now(), dur = reduce ? 0 : 650;
+  const paso = (now) => {
+    const k = dur ? Math.min(1, (now - t0) / dur) : 1; const e = 1 - Math.pow(1 - k, 3);
+    const v = desde + (hasta - desde) * e;
+    el.textContent = (Math.round(v * 100) / 100).toString().replace('.', ',');
+    if (k < 1) requestAnimationFrame(paso); else el.textContent = String(hasta).replace('.', ',');
+  };
+  requestAnimationFrame(paso);
+}
+function cambiarTexto(el, txt) {
+  if (el.textContent === txt) return;
+  if (reduce) { el.textContent = txt; return; }
+  el.classList.add('sale');
+  setTimeout(() => { el.textContent = txt; el.classList.remove('sale'); el.classList.add('entra-txt'); requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('entra-txt'))); }, 180);
+}
+let barrasHechas = false;
 function pintarOrigen(i, animar = true) {
+  const previo = ORIGENES[origenActual];
   origenActual = i;
   const o = ORIGENES[i];
   $$('#origenChips button').forEach((b, j) => b.setAttribute('aria-selected', j === i));
-  $('#origenPais').textContent = o.pais;
-  $('#origenNombre').textContent = o.nombre;
-  $('#origenNotas').textContent = o.notas;
+  cambiarTexto($('#origenPais'), o.pais);
+  cambiarTexto($('#origenNombre'), o.nombre);
+  cambiarTexto($('#origenNotas'), o.notas);
   $('#enMaquina').hidden = i !== enMaquina;
-  $('#ruedaNota').textContent = 'Puntaje';
-  $('#ruedaSub').textContent = o.puntaje;
-  $('#origenBarras').innerHTML = ATTRS.map((a, k) => `<div class="barra-n"><span>${a}</span><i><b style="--v:${((o.attrs[k] - 6) / 3 * 100).toFixed(0)}%"></b></i><span>${String(o.attrs[k]).replace('.', ',')}</span></div>`).join('');
-  $('#origenFicha').innerHTML = o.ficha.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
-  // rueda
+  centro('Puntaje', o.puntaje);
+  const barras = $('#origenBarras');
+  if (!barrasHechas) {
+    barras.innerHTML = ATTRS.map((a, k) => `<div class="barra-n"><span>${a}</span><i><b></b></i><span class="num">${String(o.attrs[k]).replace('.', ',')}</span></div>`).join('');
+    barrasHechas = true;
+  }
+  $$('.barra-n', barras).forEach((fila, k) => {
+    const b = $('b', fila); const v = ((o.attrs[k] - 6) / 3 * 100).toFixed(1);
+    b.style.transitionDelay = `${k * 55}ms`;
+    b.style.width = `${v}%`;
+    const antes = previo && previo !== o ? previo.attrs[k] : o.attrs[k];
+    if (antes !== o.attrs[k]) { contar($('.num', fila), antes, o.attrs[k]); fila.classList.remove('late'); void fila.offsetWidth; fila.classList.add('late'); }
+    else $('.num', fila).textContent = String(o.attrs[k]).replace('.', ',');
+  });
+  const ficha = $('#origenFicha');
+  if (!ficha.children.length) ficha.innerHTML = o.ficha.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  else $$('div', ficha).forEach((d, k) => { $('dt', d).textContent = o.ficha[k][0]; cambiarTexto($('dd', d), o.ficha[k][1]); });
+  // rueda: anillos pegados (sin huecos entre el de adentro y el de afuera), separados solo por el trazo
   const total = o.rueda.length;
   let a = 0, k = 0, out = '';
   const paso = (Math.PI * 2) / total;
   o.rueda.forEach(([c, notas]) => {
     const [label, color, oscuro] = CAT[c];
     const a0 = a, a1 = a + paso;
-    out += `<path class="${animar ? 'seg-in' : ''}" style="--k:${k++}" d="${arco(56, 102, a0 + 0.008, a1 - 0.008)}" fill="${color}" data-n="${label}" data-s="${notas.join(', ')}"/>`;
+    out += `<path class="seg${animar ? ' seg-in' : ''}" style="--k:${k++}" d="${arco(54, 104, a0, a1)}" fill="${color}" data-n="${label}" data-s="${notas.join(', ')}"/>`;
     const mid = (a0 + a1) / 2; const tx = 79 * Math.sin(mid), ty = -79 * Math.cos(mid);
     let rot = mid * 180 / Math.PI; if (rot > 90 && rot < 270) rot += 180;
-    out += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${rot.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)})" class="${oscuro ? 'claro' : ''}" style="font-size:11px">${label}</text>`;
+    out += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${rot.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)})" class="${oscuro ? 'claro' : ''}${animar ? ' txt-in' : ''}" style="font-size:11px">${label}</text>`;
     const sub = paso / notas.length;
     notas.forEach((n, j) => {
       const b0 = a0 + j * sub, b1 = b0 + sub;
-      out += `<path class="${animar ? 'seg-in' : ''}" style="--k:${k++}" d="${arco(105, 150, b0 + 0.008, b1 - 0.008)}" fill="${aclarar(color, .38)}" data-n="${n}" data-s="${label}"/>`;
+      out += `<path class="seg${animar ? ' seg-in' : ''}" style="--k:${k++}" d="${arco(104, 152, b0, b1)}" fill="${aclarar(color, .38)}" data-n="${n}" data-s="${label}"/>`;
     });
     a = a1;
   });
   $('#ruedaSvg').innerHTML = out;
+  $('#rueda').classList.remove('foco'); focoActual = null;
 }
+let centroTimer = 0;
+function centro(n, s) {
+  const c = $('#ruedaCentro');
+  clearTimeout(centroTimer);
+  if ($('#ruedaNota').textContent === n && $('#ruedaSub').textContent === s) { c.classList.remove('sale'); return; }
+  c.classList.add('sale');
+  centroTimer = setTimeout(() => { $('#ruedaNota').textContent = n; $('#ruedaSub').textContent = s; c.classList.remove('sale'); }, 140);
+}
+let focoActual = null, focoTimer = 0;
 function initRueda() {
   $('#origenChips').innerHTML = ORIGENES.map((o, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-o="${i}">${o.corto}</button>`).join('');
-  $('#origenChips').addEventListener('click', (e) => { const b = e.target.closest('[data-o]'); if (b) pintarOrigen(Number(b.dataset.o)); });
+  $('#origenChips').addEventListener('click', (e) => { const b = e.target.closest('[data-o]'); if (b && Number(b.dataset.o) !== origenActual) pintarOrigen(Number(b.dataset.o)); });
   const rueda = $('#rueda');
-  const foco = (p) => {
-    $$('#ruedaSvg path.on').forEach(x => x.classList.remove('on'));
-    if (!p) { rueda.classList.remove('foco'); $('#ruedaNota').textContent = 'Puntaje'; $('#ruedaSub').textContent = ORIGENES[origenActual].puntaje; return; }
+  const aplicar = (p) => {
+    if (p === focoActual) return;
+    focoActual?.classList.remove('on');
+    focoActual = p;
+    if (!p) { rueda.classList.remove('foco'); centro('Puntaje', ORIGENES[origenActual].puntaje); return; }
     p.classList.add('on'); rueda.classList.add('foco');
-    $('#ruedaNota').textContent = p.dataset.n; $('#ruedaSub').textContent = p.dataset.s;
+    centro(p.dataset.n, p.dataset.s);
   };
-  rueda.addEventListener('pointerover', (e) => { if (e.pointerType === 'mouse') foco(e.target.closest('path')); });
-  rueda.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') foco(null); });
-  rueda.addEventListener('click', (e) => { const p = e.target.closest('path'); foco(p && !p.classList.contains('on') ? p : null); });
+  // intención de hover: espera un instante antes de cambiar, y los huecos (centro, bordes) no resetean
+  const pedir = (p, ms) => { clearTimeout(focoTimer); focoTimer = setTimeout(() => aplicar(p), ms); };
+  rueda.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    const p = e.target.closest('path.seg');
+    if (p && p !== focoActual) pedir(p, focoActual ? 70 : 110);
+    else if (p === focoActual) clearTimeout(focoTimer);
+  });
+  rueda.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') pedir(null, 220); });
+  rueda.addEventListener('click', (e) => { const p = e.target.closest('path.seg'); clearTimeout(focoTimer); aplicar(p && p !== focoActual ? p : null); });
   pintarOrigen(0, false);
   const svg = $('#ruedaSvg');
   const ioR = new IntersectionObserver(([en]) => { if (en.isIntersecting) { pintarOrigen(origenActual, true); ioR.disconnect(); } }, { threshold: .3 });
