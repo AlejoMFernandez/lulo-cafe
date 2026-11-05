@@ -199,12 +199,24 @@ function pintarTaza(root, id) {
   const t = TAZAS[id] || [0, 0, 0, '', 'taza'];
   const v = VAJILLA[t[4]] || VAJILLA.taza;
   const taza = root.classList?.contains('taza') ? root : $('.taza', root);
-  taza.style.setProperty('--w', `${v.w}px`);
-  taza.style.setProperty('--h', `${v.h}px`);
-  taza.style.setProperty('--rad', v.r);
-  taza.classList.toggle('es-vaso', !v.asa);
+  const capas = $$('.taza__capa', taza);
+  const cambia = taza.dataset.tipo !== t[4];
+  if (cambia) {
+    // otro recipiente: se cambia de una (sin transformarse) y entra con un fundido corto; el líquido se vuelve a servir
+    taza.classList.add('sin-anim'); capas.forEach(c => { c.style.height = '0px'; });
+    taza.dataset.tipo = t[4];
+    const asaW = v.asa ? v.h * .26 + 12 : 0;
+    taza.style.setProperty('--w', `${v.w}px`);
+    taza.style.setProperty('--h', `${v.h}px`);
+    taza.style.setProperty('--rad', v.r);
+    taza.style.setProperty('--cx', `${110 - asaW / 2}px`);
+    taza.style.setProperty('--top', `${(230 - v.h) / 2}px`);
+    taza.classList.toggle('es-vaso', !v.asa);
+    taza.classList.remove('aparece'); void taza.offsetWidth; taza.classList.add('aparece');
+    void taza.offsetWidth; taza.classList.remove('sin-anim');
+  }
   const px = v.h / v.cap;
-  const [cafe, leche, espuma] = $$('.taza__capa', taza);
+  const [cafe, leche, espuma] = capas;
   cafe.style.height = `${t[0] * px}px`;
   leche.style.height = `${t[1] * px}px`;
   leche.classList.toggle('agua', t[3] === 'agua');
@@ -301,7 +313,7 @@ function abrirHoja(id) {
   const arte = $('#hojaArte');
   if (TAZAS[id]) {
     arte.innerHTML = $('#taza').outerHTML.replace('id="taza"', '');
-    $$('.taza__capa', arte).forEach(c => { c.style.height = '0px'; });
+    $$('.taza__capa', arte).forEach(c => { c.style.height = '0px'; }); $('.taza', arte).dataset.tipo = '';
     requestAnimationFrame(() => requestAnimationFrame(() => pintarTaza(arte, id)));
   } else if (p.foto) {
     arte.innerHTML = `<figure class="plato"><img src="${fotoGrande(p)}" alt="${esc(p.nombre)}" width="640" height="640" decoding="async"></figure>`;
